@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-app
+  labels:
+    app: calculator-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-app
+  template:
+    metadata:
+      labels:
+        app: calculator-app
+    spec:
+      containers:
+      - name: calculator-app
+        image: raveenzag123/calculator-app
+        ports:
+        - containerPort: 8081
+        env:
+        - name: PORT
+          value: "8081"
